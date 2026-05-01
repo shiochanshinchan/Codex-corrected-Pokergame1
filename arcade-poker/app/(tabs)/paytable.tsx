@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { NeonText } from "@/components/poker/neon-text";
-import { PAY_TABLE } from "@/lib/poker";
+import { PAY_TABLE, calculatePayout } from "@/lib/poker";
 import { useGame } from "@/lib/game-context";
 
 export default function PayTableScreen() {
@@ -35,7 +35,7 @@ export default function PayTableScreen() {
           data={PAY_TABLE}
           keyExtractor={(item) => item.rank}
           renderItem={({ item, index }) => {
-            const payout = item.multiplier * bet;
+            const payout = calculatePayout(item, bet);
             const isTop = index === 0;
             const rowColor = isTop ? "#FFD700" : index < 3 ? "#00FF41" : "#4CAF50";
             return (

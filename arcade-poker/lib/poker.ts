@@ -224,6 +224,10 @@ export const PAY_TABLE: HandResult[] = [
   { rank: "jacks_or_better", name: "Jacks or Better", nameJa: "ジャックスオアベター", multiplier: 1 },
 ];
 
+export function calculatePayout(result: HandResult, bet: number): number {
+  return result.multiplier * bet;
+}
+
 // ============================================================
 // Suit display helpers
 // ============================================================

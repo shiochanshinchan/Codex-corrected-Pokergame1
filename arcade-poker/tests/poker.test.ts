@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  calculatePayout,
   createDeck,
   evaluateHand,
   shuffleDeck,
@@ -203,5 +204,31 @@ describe("evaluateHand", () => {
     const result = evaluateHand(hand);
     expect(result.rank).toBe("high_card");
     expect(result.multiplier).toBe(0);
+  });
+});
+
+describe("calculatePayout", () => {
+  it("multiplies the hand multiplier by the bet", () => {
+    const result = evaluateHand([
+      c("A", "spades"),
+      c("A", "hearts"),
+      c("A", "diamonds"),
+      c("A", "clubs"),
+      c("K", "spades"),
+    ]);
+
+    expect(calculatePayout(result, 5)).toBe(125);
+  });
+
+  it("returns 0 for a losing hand", () => {
+    const result = evaluateHand([
+      c("A", "spades"),
+      c("9", "hearts"),
+      c("7", "diamonds"),
+      c("5", "clubs"),
+      c("3", "spades"),
+    ]);
+
+    expect(calculatePayout(result, 50)).toBe(0);
   });
 });

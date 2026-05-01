@@ -10,6 +10,7 @@ import React, {
 import {
   BET_OPTIONS,
   INITIAL_COINS,
+  calculatePayout,
   createDeck,
   createInitialState,
   dealCards,
@@ -94,7 +95,7 @@ function reducer(state: GameState, action: Action): GameState {
       }
 
       const result = evaluateHand(newHand);
-      const winAmount = result.multiplier * state.bet;
+      const winAmount = calculatePayout(result, state.bet);
       const newCoins = state.coins + winAmount;
       const newHighScore = Math.max(state.highScore, newCoins);
       const newTotalGames = state.totalGames + 1;
