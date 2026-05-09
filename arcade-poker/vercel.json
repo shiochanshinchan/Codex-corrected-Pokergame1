@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run build:vercel",
+  "buildCommand": "corepack pnpm run build:vercel",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
