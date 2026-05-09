@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run build:web",
+  "buildCommand": "pnpm run build:vercel",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
