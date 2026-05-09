@@ -1,0 +1,12 @@
+{
+  "installCommand": "corepack enable && cd arcade-poker && pnpm install --frozen-lockfile",
+  "buildCommand": "corepack enable && cd arcade-poker && pnpm run build:web",
+  "outputDirectory": "arcade-poker/dist",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
